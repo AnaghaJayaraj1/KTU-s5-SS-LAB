@@ -5,9 +5,10 @@ struct process{
     int need[10];
 }p[10];
 #include<stdio.h>
+#include<stdlib.h>
 int main()
 {
-    int n,r,i,res[10],j,avail[i],req[10],num,k,b,g,seq[10],flag=0,cnt=0,count=0;
+    int n=0,r=0,i=0,res[10],j=0,avail[i],req[10],num=0,k=0,b=0,g=0,safeseq[10],flag=0,cnt=0,count=0,work[10];
     printf("Enter the number of resources(max=10): ");
     scanf("%d", &r);
 
@@ -51,7 +52,7 @@ int main()
     }
 
 
-    //printing allocation matrix
+  /*  //printing allocation matrix
     printf("Allocation matrix\n");
     for(i=0;i<n;i++)
     {
@@ -85,9 +86,7 @@ int main()
     }
 
 
-
-
-
+*/
 
 
 
@@ -99,7 +98,7 @@ int main()
         printf("Enter available resources for r%d: ",i+1);
         scanf("%d",&avail[i]);
     }
-
+/*
     printf("if a new request has come\n");
     printf("Enter the process number\n");
     scanf("%d", &num); 
@@ -140,7 +139,7 @@ int main()
 
 
 
-
+*/
 
 
 
@@ -180,6 +179,105 @@ int main()
 
 
 
+
+
+
+
+
+
+
+
+
+     printf("\n Request is coming which process number: ");
+     scanf("%d",&num);
+     printf("\n enter the reqested details for all resources: ");
+     for(i=0;i<r;i++)
+      scanf("%d",&req[i]);
+     for(j=0;j<r;j++)
+     {
+       if(req[j]<=p[num].need[j])  
+
+       {
+          if(req[j]<=avail[j])
+           {
+            avail[j]=avail[j]-req[j];
+            p[num].alloc[j]=p[num].alloc[j]+req[j];
+            p[num].need[j]=p[num].need[j]-req[j];
+            //printf("avail:%d",avail[j]);      
+
+           }
+      // printf("\tneed: %d\n",p[num].need[j]);
+       }
+       else
+       {
+        printf("\n Process is not in safe state and hence request cannot be granted");
+        exit(0);
+       }
+      }
+      printf("\nrequest can be granted");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       int sseq[10],ss=0,chk=0,chki=0;
+     for(j=0;j<r;j++)
+       work[j]=avail[j];//initialise work=available
+     for(i=0;i<n;i++)
+       p[i].flag=0;//initialise finish[i]=false for i=0,1,2...
+     while(count!=n)
+     {
+     for(i=0;i<n;i++)
+
+           {    
+
+             chk=0;
+             for(j=0;j<r;j++)
+             {
+              if(p[i].flag==0)
+              {
+               if(p[i].need[j]<=work[j])
+               chk++;
+              }
+              if(chk==r)
+              {
+               for(j=0;j<r;j++)
+               {
+                work[j]=work[j]+p[i].alloc[j];
+                p[i].flag=1;
+               }
+              sseq[ss]=i;
+              ss++;
+              count++;
+              }
+             }
+            }
+     }
+    for(i=0;i<n;i++)
+     {
+      if(p[i].flag==1)
+      chki++;
+     }
+     if(chki>=n)
+     {
+      printf("\n System is in safe state: ");
+      for(i=0;i<n;i++)
+      printf("%d ",sseq[i]);
+     }
+     else
+     printf("\nsystem is not safe");
 
 
 
