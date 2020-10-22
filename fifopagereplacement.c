@@ -20,7 +20,6 @@ int main()
     {
         printf("%d  ",frame[k]);
     }
-next=0;
     for(i=0;i<pno;i++)
     {
         flag=0;
