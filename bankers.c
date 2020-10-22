@@ -188,7 +188,7 @@ int main()
 
 
 
-     printf("\n Request is coming which process number: ");
+     printf("\n Request is coming from which process number: ");
      scanf("%d",&num);
      printf("\n enter the reqested details for all resources: ");
      for(i=0;i<r;i++)
