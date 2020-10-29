@@ -15,6 +15,8 @@ int main()
     {
         frame[i]=-1;
     }
+
+
     printf("Frame now: ");
     for(k=0;k<fno;k++)
     {

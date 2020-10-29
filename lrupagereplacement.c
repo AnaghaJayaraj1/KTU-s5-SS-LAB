@@ -1,65 +1,78 @@
 #include<stdio.h>
+ 
 int main()
 {
-    int fno=0,pno=0,i=0,pagestr[30],frame[10], next=0, j=0, pfault=0,k=0,flag=0,count[10];
-    printf("Enter the number of frames: ");
-    scanf("%d", &fno);
-    printf("Enter the number of pages: ");
-    scanf("%d", &pno);
-    printf("Enter the reference string");
-    for(i=0;i<pno;i++)
-    {
-        scanf("%d", &pagestr[i]);
-    }
-    for(i=0;i<fno;i++)
-    {
-        frame[i]=-1;
-        count[i]=0;
-    }
-    printf("Frame now: ");
-    for(k=0;k<fno;k++)
-    {
-        printf("%d  ",frame[k]);
-    }
-
-
-
-
-    for(i=0;i<pno;i++)
-    {
-        flag=0;
-        for(j=0;j<fno;j++)
-        {
-            int ps=pagestr[i];
-            if(ps==frame[j])
+      int frames[10], temp[10], pages[30];
+      int npages, i, n, position, k, l, nframes;
+      int  flag , page_fault = 0;
+      printf("\nEnter Total Number of Frames:\t");
+      scanf("%d", &nframes);
+      for(i = 0; i < nframes; i++)
+      {
+            frames[i] = -1;
+      }
+      printf("Enter Total Number of Pages:\t");
+      scanf("%d", &npages);
+      printf("Enter Values for Reference String:\n");
+      for(i = 0; i < npages; i++)
+      {
+            printf("Value No.[%d]:\t", i + 1);
+            scanf("%d", &pages[i]);
+      }
+      for(n = 0; n < npages; n++)
+      {
+            flag = 0;
+            for(i = 0; i < nframes; i++)
             {
-                flag++;
-                count[j%fno]=count[j%fno]+1;
-                break;
+                  if(frames[i] == pages[n])
+                  {
+                        flag = 1;
+                        break;
+                  }
+		  else
+		      if(frames[i] == -1)
+                        {
+                              frames[i] = pages[n];
+                              page_fault++;
+                              flag = 1;
+                              break;
+                        }
             }
-        }
-        if(flag==0)
-        {
-            next=0;
-            for(k=0;k<fno-1;k++)
+            if(flag == 0)
             {
-                if(count[k]>count[k+1])
-                {
-                    next=k+1;
-                }
+                  for(i = 0; i < nframes; i++)
+                  {
+                        temp[i] = 0;
+                  }
+                  for(k = n - 1, l = 1; l < nframes;l++, k--)
+                  {
+                        for(i = 0; i < nframes; i++)
+                        {
+                              if(frames[i] == pages[k])
+                              {
+                                    temp[i] = 1;
+                                    break;
+                              }
+                        }
+                  }
+                  for(i = 0; i < nframes; i++)
+                  {
+                        if(temp[i] == 0)
+     			    {
+                            frames[i]=pages[n];
+                            page_fault++;
+                            break;
+                           }
+                            
+                  }
             }
-            
-            frame[next%fno]=pagestr[i];
-            count[next%fno]=count[next%fno]+1;
-            pfault++; 
-        }
-        printf("\nFrame now: ");
-        for(k=0;k<fno;k++)
-        {
-            printf("%d  ",frame[k]);
-        }
-              
-    }
-    printf("\nNumber of page faults: %d ", pfault);
-    return 0;
+            printf("\n");
+            printf("%d -->    ",pages[n]);
+            for(i = 0; i < nframes; i++)
+            {
+                  printf("%d\t", frames[i]);
+            }
+      }
+      printf("\nTotal Number of Page Faults:\t%d\n", page_fault);
+      return 0;
 }

@@ -8,7 +8,7 @@ struct process{
 #include<stdlib.h>
 int main()
 {
-    int n=0,r=0,i=0,res[10],j=0,avail[i],req[10],num=0,k=0,b=0,g=0,safeseq[10],flag=0,cnt=0,count=0,work[10];
+    int n=0,r=0,i=0,res[10],j=0,avail[10],req[10],num=0,k=0,b=0,g=0,safeseq[10],flag=0,cnt=0,count=0,work[10];
     printf("Enter the number of resources(max=10): ");
     scanf("%d", &r);
 
