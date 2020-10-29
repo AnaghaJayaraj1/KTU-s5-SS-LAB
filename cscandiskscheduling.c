@@ -46,7 +46,7 @@ int main()
     if(left_close<abs(head-t[tnum+2]))
     {
         
-        for(i=0;i<=tnum+1;i++)
+        for(i=0;i<=tnum+2;i++)
         {
             if(k<=headpos&&k>=t[0])
             {

@@ -19,7 +19,7 @@ int main()
     printf("Enter the ending: ");
     scanf("%d", &t[tnum+2]);
 
-    for(i=0;i<tnum+2;i++)
+    for(i=0;i<=tnum+2;i++)
     {
         for(j=i+1;j<=tnum+2;j++)
         {
@@ -32,7 +32,7 @@ int main()
         }
     }
 
-    for(i=0;i<=tnum+2;i++)
+    for(i=0;i<tnum+2;i++)
     {
         if(t[i]==head)
         {
@@ -75,10 +75,13 @@ int main()
             }
         }
     }
-
-    for(i=0;i<=tnum;i++)
+    sum=0;
+    for(i=0;i<=tnum+1;i++)
     {
         printf("%d ", seq[i]);
+    }
+     for(i=0;i<tnum+1;i++)
+    {
         sum=sum+abs(seq[i+1]-seq[i]);
     }
     printf("\nTotal track movement: %d \n",sum);
