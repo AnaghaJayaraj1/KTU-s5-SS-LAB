@@ -36,8 +36,6 @@ int main()
     {
         if(t[i]==head)
         {
-            k=i;
-            m=i+1;
             headpos=i;
         }
     }
@@ -45,14 +43,16 @@ int main()
     printf("Sequence: ");
     if(left_close<abs(head-t[tnum+2]))
     {
+         k=headpos;
+            m=headpos+1;
         for(i=0;i<=tnum+1;i++)
         {
-            if(k<=headpos&&k>=t[0])
+            if(k<=headpos&&k>=0)
             {
                 seq[i]=t[k];
                 k--;
             }
-            else if(m>headpos&&m<t[tnum+2])
+            else if(m>headpos&&m<tnum+2)
             {
                 seq[i]=t[m];
                 m++;
@@ -61,20 +61,24 @@ int main()
     }
     else
     {
+        k=headpos-1;
+        m=headpos;
         for(i=0;i<=tnum+1;i++)
         {
-            if(m>=headpos&&m<=t[tnum+2])
+            if(m>=headpos&&m<=tnum+2)
             {
                 seq[i]=t[m];
                 m++;
             }
-            else if(k<headpos&&k>t[0])
+            else if(k<headpos&&k>0)
             {
                 seq[i]=t[k];
                 k--;
             }
         }
     }
+
+    
     sum=0;
     for(i=0;i<=tnum+1;i++)
     {

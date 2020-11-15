@@ -19,7 +19,7 @@ int main()
     printf("Enter the ending: ");
     scanf("%d", &t[tnum+2]);
 
-    for(i=0;i<tnum+2;i++)
+    for(i=0;i<=tnum+2;i++)
     {
         for(j=i+1;j<=tnum+2;j++)
         {
@@ -32,55 +32,65 @@ int main()
         }
     }
 
-    for(i=0;i<=tnum+2;i++)
+    for(i=0;i<tnum+2;i++)
     {
         if(t[i]==head)
         {
+            
             headpos=i;
+            break;
         }
     }
-    k=0;
-    m=tnum+2;
     left_close = abs(head-t[0]);
     printf("Sequence: ");
     if(left_close<abs(head-t[tnum+2]))
     {
-        
+        k=headpos;
+        m=tnum+2;
         for(i=0;i<=tnum+2;i++)
         {
-            if(k<=headpos&&k>=t[0])
+            if(k<=headpos&&k>=0)
             {
                 seq[i]=t[k];
                 k--;
             }
-            else if(m>headpos&&m<=t[tnum+2])
+            else if(m>headpos&&m<=tnum+2)
             {
                 seq[i]=t[m];
                 m--;
             }
         }
     }
-    else
+     else
     {
-        
-        for(i=0;i<=tnum+1;i++)
+        k=0;
+        m=headpos;
+        for(i=0;i<=tnum+2;i++)
         {
-            if(m>=headpos&&m<=t[tnum+2])
+            if(m>=headpos&&m<=tnum+2)
             {
                 seq[i]=t[m];
                 m++;
+
             }
-            else if(k<headpos&&k>=t[0])
+            else if(k<headpos&&k>=0)
             {
                 seq[i]=t[k];
                 k++;
+
             }
         }
     }
 
-    for(i=0;i<=tnum;i++)
+
+    
+    sum=0;
+    for(i=0;i<=tnum+2;i++)
     {
         printf("%d ", seq[i]);
+    }
+     for(i=0;i<=tnum+1;i++)
+    {
         sum=sum+abs(seq[i+1]-seq[i]);
     }
     printf("\nTotal track movement: %d \n",sum);

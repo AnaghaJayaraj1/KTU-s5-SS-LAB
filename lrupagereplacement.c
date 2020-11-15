@@ -16,7 +16,6 @@ int main()
       printf("Enter Values for Reference String:\n");
       for(i = 0; i < npages; i++)
       {
-            printf("Value No.[%d]:\t", i + 1);
             scanf("%d", &pages[i]);
       }
       for(n = 0; n < npages; n++)
@@ -67,7 +66,6 @@ int main()
                   }
             }
             printf("\n");
-            printf("%d -->    ",pages[n]);
             for(i = 0; i < nframes; i++)
             {
                   printf("%d\t", frames[i]);
