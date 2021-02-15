@@ -13,7 +13,7 @@
   b. SCAN (scandiskscheduling.c)
   c. CSCAN (cscandiskscheduling.c)
 5. Producer Consumer Problem (pro_cons.c)
-6. Dining Philosopher Problem ()
+6. Dining Philosopher Problem (dining_philosopher.c)
 
 
   
