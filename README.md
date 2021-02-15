@@ -14,6 +14,14 @@
   c. CSCAN (cscandiskscheduling.c)
 5. Producer Consumer Problem (pro_cons.c)
 6. Dining Philosopher Problem (dining_philosopher.c)
-
+7. Two Pass Assembler
+  a. Pass1 (pass1)
+  b. Pass2 (pass2)
+8. Two Pass Macroprocessor (macroprocessor)
+9. One Pass Assembler (onepassassembler)
+10. File Organization Techniques 
+  a. Single Level Directory (singleleveldirectory.c)
+  b. Two Level Directory (twoleveldirectory.c)
+11. Symbol Table Using Hashing (symbolhashing.c)
 
   
